@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "lib": ["ESNext", "DOM", "WebWorker", "ScriptHost"],
+    "moduleResolution": "Node",
+    "strict": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "noEmit": true,
+    "noImplicitReturns": true,
+    "skipLibCheck": true,
+    "allowJs": true
+  },
+  "include": ["src", 
+ // "src/animweb/helpers/QuadTree.worker.jsree.worker.js"
+],
+}
