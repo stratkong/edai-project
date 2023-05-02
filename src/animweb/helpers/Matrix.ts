@@ -1,5 +1,5 @@
 export default class Matrix {
-    constructor () {
+    constructor ( ...row: Array<Array<any>>) {
         
     }
 }
