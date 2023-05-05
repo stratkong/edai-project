@@ -1,12 +1,13 @@
 import p5 from 'p5'
+import Colour from './Colour';
 
 export default class Point {
-  colour: string;
+  colour: Colour;
   size: number;
   x: number;
   y: number;
 
-  constructor(colour: string, size: number, x: number, y: number) {
+  constructor(colour: Colour, size: number = 1, x: number, y: number) {
     this.colour = colour;
     this.size = size;
     this.x = x;
@@ -14,9 +15,9 @@ export default class Point {
   }
 
   draw(p: p5) {
-    p.noStroke();
-    p.fill(this.colour);
-    p.ellipse(this.x, this.y, this.size, this.size);
+    p.noStroke()
+    p.fill(this.colour.toString())
+    p.ellipse(this.x, this.y, this.size, this.size)
   }
 }
 
