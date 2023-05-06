@@ -14,18 +14,7 @@ function roundOff(num: number, precision: number)
     return Math.round(num*multiplier)/multiplier
 }
 
-function checkEqual(num1: number, num2: number)
-{
-    if (num1 === num2)
-    {
-        return true
-    }
-    
-    else
-    {
-        return false
-    }
-}
-
-
-
+function isEqual(num1: number, num2: number, tolerance: number = Number.EPSILON) {
+    return Math.abs(num1 - num2) < tolerance;
+  }
+  
