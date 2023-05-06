@@ -1,37 +1,36 @@
+import { matrix, Matrix as MatrixType } from "mathjs";
+import *as math from "mathjs"
 
 export default class Matrix {
-    rows: number;
-    cols: number;
-    data: number[][];
-  
-    constructor(rows: number, cols: number, data: number[][]) {
-      this.rows = rows;
-      this.cols = cols;
-      this.data = data;
-    }
-  
-    toArray(): number[] {
-        const arr: number[] = [];
-        for (let i = 0; i < this.rows; i++) {
-          for (let j = 0; j < this.cols; j++) {
-            arr.push(this.data[i][j]);
-          }
-        }
-        return arr;
+
+    matrix: MatrixType = matrix()
+
+    constructor (...rows: Array<any>) { // [[1, 2, 3], [2, 3, 4]]
+        rows.forEach((row, i) => {
+            row.forEach((num: number, j: number) => {
+                this.matrix.set([i, j], num)
+            })
+        })
     }
 
-    add(other: Matrix): Matrix {
-        if (this.rows !== other.rows || this.cols !== other.cols) {
-          throw new Error("Matrix dimensions must match");
-        }
-        const data: number[][] = [];
-        for (let i = 0; i < this.rows; i++) {
-          const row: number[] = [];
-          for (let j = 0; j < this.cols; j++) {
-            row.push(this.data[i][j] + other.data[i][j]);
-          }
-          data.push(row);
-        }
-        return new Matrix(this.rows, this.cols, data);
-      }
+    static fromColumns (...cols: Array<any>) {
+        let m = new Matrix()
+        cols.forEach((col, i) => {
+            col.forEach((num: number, j: number) => {
+                m.matrix.set([j, i], num)
+            })
+        })
+        return m;
+    }
+
+    addition (matrix: Matrix) {
+
+
+        const addMatrix = math.add(matrix.matrix,this.matrix);
+        let finalMatrix = new Matrix();
+        finalMatrix.matrix = addMatrix;
+        return finalMatrix;
+
+    }
+
 }
