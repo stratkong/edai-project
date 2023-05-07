@@ -5,7 +5,7 @@ export default class Matrix {
 
     matrix: MatrixType = matrix()
 
-    constructor (...rows: Array<any>) { // [[1, 2, 3], [2, 3, 4]]
+    constructor (...rows: Array<any>) { // formation of matrix with help of row elements
         rows.forEach((row, i) => {
             row.forEach((num: number, j: number) => {
                 this.matrix.set([i, j], num)
@@ -13,7 +13,7 @@ export default class Matrix {
         })
     }
 
-    static fromColumns (...cols: Array<any>) {
+    static fromColumns (...cols: Array<any>) { // formation of matrix with help of column elements
         let m = new Matrix()
         cols.forEach((col, i) => {
             col.forEach((num: number, j: number) => {
@@ -23,7 +23,7 @@ export default class Matrix {
         return m;
     }
 
-    addition (matrix: Matrix) {
+    add (matrix: Matrix) {
         //@ts-ignore
         const numRows1: number = math.size(matrix.matrix)[0];
         //@ts-ignore
@@ -44,7 +44,7 @@ export default class Matrix {
 
     }
 
-    subtraction (matrix: Matrix) {
+    subtract (matrix: Matrix) {
         //@ts-ignore
         const numRows1: number = math.size(matrix.matrix)[0];
         //@ts-ignore
@@ -65,7 +65,9 @@ export default class Matrix {
 
     }
 
-    multiplication (matrix: Matrix) {
+
+    
+    multiply (matrix: Matrix) {
         //@ts-ignore
         const numRows1: number = math.size(matrix.matrix)[0];
         //@ts-ignore
@@ -84,6 +86,19 @@ export default class Matrix {
         finalMatrix.matrix = multMatrix;
         return finalMatrix;
 
+    }
+
+    identity (matrix: Matrix) {
+        //@ts-ignore
+        const numRows: number = math.size(matrix.matrix)[0];
+        //@ts-ignore
+        const numCols: number = math.size(matrix.matrix)[1];
+
+        const identityMatrix = math.identity( numRows , numCols );
+        var finalMatrix = new Matrix();
+        //@ts-ignore
+        finalMatrix.matrix = identityMatrix;
+        return finalMatrix; 
     }
 
 }
