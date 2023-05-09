@@ -1,5 +1,8 @@
-import { identity } from "mathjs";
-import Matrix from "./animweb/helpers/Matrix";
+import Point from './AnimObjects2D/Point'
+import Scene2D from './core/Scene2D'
+import { Width, Height } from './helpers/Dimensions'
 
-let m1 = Matrix.fromRows([1, 0], [0, 1]).inverse
-console.log(m1.power(2));
+const scene = new Scene2D(Width.full, Height.full)
+
+const point = new Point(100, 100, { scene })
+scene.add(point)

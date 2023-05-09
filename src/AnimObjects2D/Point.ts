@@ -1,20 +1,16 @@
 import p5 from 'p5'
-import Colour from '../auxiliary/Colour'
+import { PointProps } from '@/interfaces/AnimObjects2D'
+import AnimObject2D from '@/core/AnimObject2D'
 
-export default class Point {
-  colour: Colour
-  size: number
+export default class Point extends AnimObject2D {
+  size: number = 5
   x: number
   y: number
 
-  constructor(
-    colour: Colour = new Colour(0, 0, 0, 1),
-    size: number = 1,
-    x: number,
-    y: number
-  ) {
-    this.colour = colour
-    this.size = size
+  constructor(x: number, y: number, options: PointProps) {
+    super(options.scene)
+    if (options.colour) this.colour = options.colour
+    if (options.size) this.size = options.size
     this.x = x
     this.y = y
   }

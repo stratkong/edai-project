@@ -1,4 +1,16 @@
-import { matrix, Matrix as MatrixType } from 'mathjs'
+import {
+  matrix,
+  Matrix as MatrixType,
+  add as matadd,
+  subtract as matsub,
+  multiply as matmul,
+  inv as matinv,
+  det as matdet,
+  identity as identity,
+  transpose,
+  zeros,
+  pow,
+} from 'mathjs'
 import * as math from 'mathjs'
 
 export default class Matrix {
@@ -45,7 +57,7 @@ export default class Matrix {
       throw new Error('Matrix dimensions must match')
     }
 
-    const addMatrix = math.add(matrix.matrix, this.matrix)
+    const addMatrix = matadd(matrix.matrix, this.matrix)
     var finalMatrix = new Matrix()
     finalMatrix.matrix = addMatrix
     return finalMatrix
@@ -61,7 +73,7 @@ export default class Matrix {
       throw new Error('Matrix dimensions must match')
     }
 
-    const subtMatrix = math.subtract(matrix.matrix, this.matrix)
+    const subtMatrix = matsub(matrix.matrix, this.matrix)
     var finalMatrix = new Matrix()
     finalMatrix.matrix = subtMatrix
     return finalMatrix
@@ -79,49 +91,46 @@ export default class Matrix {
 
     const multMatrix =
       matrix instanceof Matrix
-        ? math.multiply(matrix.matrix, this.matrix)
-        : math.multiply(matrix, this.matrix)
+        ? matmul(matrix.matrix, this.matrix)
+        : matmul(matrix, this.matrix)
     var finalMatrix = new Matrix()
     finalMatrix.matrix = multMatrix
     return finalMatrix
   }
 
   static identity(order: number) {
-    const identityMatrix = math.identity(order, order) as MatrixType
+    const identityMatrix = identity(order, order) as MatrixType
     var finalMatrix = new Matrix()
     finalMatrix.matrix = identityMatrix
     return finalMatrix
   }
 
   get inverse() {
-    if (math.det(this.matrix) == 0) {
+    if (matdet(this.matrix) == 0) {
       throw new Error('Inverse of this matrix is not defined')
     }
-    const inverseMatrix = math.inv(this.matrix)
+    const inverseMatrix = matinv(this.matrix)
     let finalMatrix = new Matrix()
     finalMatrix.matrix = inverseMatrix
     return finalMatrix
   }
 
   get adjoint() {
-    const adjointMatrix = math.multiply(
-      math.det(this.matrix),
-      math.inv(this.matrix)
-    )
+    const adjointMatrix = matmul(matdet(this.matrix), matinv(this.matrix))
     let finalMatrix = new Matrix()
     finalMatrix.matrix = adjointMatrix
     return finalMatrix
   }
 
   get transpose() {
-    const transposeMatrix = math.transpose(this.matrix)
+    const transposeMatrix = transpose(this.matrix)
     let finalMatrix = new Matrix()
     finalMatrix.matrix = transposeMatrix
     return finalMatrix
   }
 
   static zeroes(order: number) {
-    const zeroMatrix = math.zeros(order, order) as MatrixType
+    const zeroMatrix = zeros(order, order) as MatrixType
     let finalMatrix = new Matrix()
     finalMatrix.matrix = zeroMatrix
     return finalMatrix
@@ -129,7 +138,7 @@ export default class Matrix {
 
   power(power: number) {
     // @ts-ignore
-    const powMatrix = math.pow(this.matrix, power)
+    const powMatrix = pow(this.matrix, power)
     let finalMatrix = new Matrix()
     // @ts-ignore
     finalMatrix.matrix = powMatrix

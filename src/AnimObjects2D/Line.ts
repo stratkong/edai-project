@@ -1,5 +1,5 @@
 import p5 from 'p5'
-import Colour from '../auxiliary/Colour'
+import Colour from '@auxiliary/Colour'
 
 export default class Line {
   static doublePoint(
