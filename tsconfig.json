@@ -12,9 +12,20 @@
     "noEmit": true,
     "noImplicitReturns": true,
     "skipLibCheck": true,
-    "allowJs": true
+    "allowJs": true,
+    "allowImportingTsExtensions": true,
+    "paths": {
+      "@/*": ["./src/*"],
+      "@AnimObjects2D/*": ["./src/AnimObjects2D/*"],
+      "@AnimObjects3D/*": ["./src/AnimObjects3D/*"],
+      "@auxiliary/*": ["./src/auxiliary/*"],
+      "@core/*": ["./src/core/*"],
+      "@helpers/*": ["./src/helpers/*"],
+      "@interfaces/*": ["./src/interfaces/*"],
+      "@transitions/*": ["./src/transitions/*"],
+      "@ui/*": ["./src/ui/*"],
+      "@workers/*": ["./src/workers/*"],
+      "@enums/*": ["./src/enums/*"],
+    }
   },
-  "include": ["src", 
- // "src/animweb/helpers/QuadTree.worker.jsree.worker.js"
-],
 }

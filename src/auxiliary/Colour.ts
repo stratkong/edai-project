@@ -9,25 +9,24 @@ export default class Colour
         let bStr = ''
         let aStr = ''
 
-        if (r < 255 && r > 0)
+        if (r <= 255 && r >= 0)
         {
             rStr = r.toString()
         }
 
-        if (g < 255 && g > 0)
+        if (g <= 255 && g >= 0)
         {
             gStr = g.toString()
         }
         
-        if (b < 255 && b > 0)
-        {
-            bStr = b.toString()
+        if (b <= 255 && b >= 0) {
+          bStr = b.toString()
+        }
+
+        if (a <= 1 && a >= 0) {
+          aStr = a.toString()
         }
         
-        if (a <= 1 && a >= 0)
-        {
-            aStr = b.toString()
-        }
        
         this.rgba = 'rgba(' + rStr + ',' + gStr + ',' + bStr + ',' + aStr + ')'
     }
@@ -36,10 +35,14 @@ export default class Colour
 
     static fromHex(hex: string, a: number = 1) 
     {   
-        
-        let r = parseInt(hex.slice(1, 3), 16)
-        let g = parseInt(hex.slice(3, 5), 16)
-        let b = parseInt(hex.slice(5, 7), 16)
+        hex = hex.replaceAll('#', '')
+        if (hex.length == 3) {
+          hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2]
+        }
+
+        let r = parseInt(hex.slice(0, 2), 16)
+        let g = parseInt(hex.slice(2, 4), 16)
+        let b = parseInt(hex.slice(4, 6), 16)
       
         return new Colour(r, g, b, a)
     }
