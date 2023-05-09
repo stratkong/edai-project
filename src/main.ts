@@ -1,6 +1,5 @@
-import Colour from "./animweb/helpers/Colour";
+import { identity } from "mathjs";
+import Matrix from "./animweb/helpers/Matrix";
 
-let c = new Colour(9, 9, 9, 0.5);
-let c2 = Colour.fromHex('#ff0000');
-
-console.log(c)
+let m1 = Matrix.fromRows([1, 0], [0, 1]).inverse
+console.log(m1.power(2));
