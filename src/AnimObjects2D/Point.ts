@@ -16,8 +16,7 @@ export default class Point extends AnimObject2D {
   }
 
   draw(p: p5) {
-    p.noStroke()
-    p.fill(this.colour.toString())
+    p.stroke(this.colour.rgba)
     p.ellipse(this.x, this.y, this.size, this.size)
   }
 }
