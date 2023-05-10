@@ -1,8 +1,10 @@
-import Point from './AnimObjects2D/Point'
-import Scene2D from './core/Scene2D'
-import { Width, Height } from './helpers/Dimensions'
+import Line from "./AnimObjects2D/Line";
+import NumberPlane from "./AnimObjects2D/NumberPlane";
+import Scene2D from "./core/Scene2D";
+import { Lines } from "./enums/AnimObjects2D";
+import { Width , Height } from "./helpers/Dimensions";
 
-const scene = new Scene2D(Width.full, Height.full)
+let s = new Scene2D(Width.full , Height.full);
+let p = new NumberPlane({ unit: 10, s })
 
-const point = new Point(100, 100, { scene })
-scene.add(point)
+s.add(p)
